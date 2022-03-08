@@ -15,9 +15,9 @@
         </h3>
 
         <form action="" method="Post">
-            Login<input type="text" name="login">
-            mdp<input type="text" name="mdp">
-            <input type="submit" name="connexion" value="ok">
+            Login <input type="text" name="login">
+            Password <input type="text" name="mdp">
+            <input type="submit" name="connexion" value="Connexion">
         </form>
 
 
