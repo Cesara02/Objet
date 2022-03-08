@@ -4,4 +4,12 @@ body {
 
 h3 {
     text-align: center;
+    padding-bottom: 40px;
+}
+
+input[type=submit] {
+    background-color: #2B4C9B;
+    color: white;
+    padding: 4px 4px;
+    border: none;
 }
