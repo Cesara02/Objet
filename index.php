@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Formulaire</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
     <script src='main.js'></script>
@@ -23,21 +23,19 @@
 
         <?php
         
-        $U1 = new User("Alexis","Password");
-        $U2 = new User("Elliot","Bordrez");
-        $U3 = new User("Mathys","Dechyr");
-        $U4 = new User("René","Michel");
-        $U5 = new User("Julien","Langlace");
-
         $TableauUser = array();
-
-        array_push($TableauUser,$U1);
-        array_push($TableauUser,$U2);
-        array_push($TableauUser,$U3);
-        array_push($TableauUser,$U4);
-        array_push($TableauUser,$U5);
-       
-        $mdp = "";
+        try {
+            $bdd = new PDO('mysql:host=192.168.65.193;dbname=filmnotation', 'UserWeb', 'UserWeb');
+            $req = "SELECT * from User";
+            $reponses = $bdd->query($req);
+            while ($donnees = $reponses->fetch()) {
+                echo '<p>' .$donnees['id']  . "  ". $donnees['login'] . "  ". $donnees['mdp'] . '</p>';
+                array_push($TableauUser,new User($donnees['id'],$donnees['login'],$donnees['mdp']));
+            } 
+        
+        } catch (\Throwable $th) {
+           echo $th;
+        } 
 
         if(isset($_POST["connexion"])){
 
